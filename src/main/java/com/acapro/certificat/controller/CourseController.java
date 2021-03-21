@@ -1,0 +1,55 @@
+package com.acapro.certificat.controller;
+
+import com.acapro.certificat.api.ApiResponse;
+import com.acapro.certificat.service.CourseService;
+import com.acapro.certificat.transfer.request.course.CreateCourseRequest;
+import com.acapro.certificat.transfer.request.course.UpdateCourseRequest;
+import com.acapro.certificat.transfer.response.course.CreateCourseResponse;
+import com.acapro.certificat.transfer.response.course.GetCourseResponse;
+import com.acapro.certificat.transfer.response.course.UpdateCourseResponse;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+@RestController
+@RequestMapping("/course")
+public class CourseController {
+    private final CourseService courseService;
+
+    public CourseController(CourseService courseService) {
+        this.courseService = courseService;
+    }
+
+    @PostMapping("/add")
+    public ApiResponse<CreateCourseResponse> add(@RequestBody CreateCourseRequest createCourseRequest) {
+
+        return new ApiResponse<>("Course successfully created", HttpStatus.OK.value(), courseService.add(createCourseRequest));
+    }
+
+    @GetMapping("{id}")
+    public ApiResponse<GetCourseResponse> get(@PathVariable Long id) {
+        return new ApiResponse<>(String.format("Course  by id: {%d}",id), HttpStatus.CREATED.value(), courseService.get(id));
+    }
+
+
+    @GetMapping("/all")
+    public ApiResponse<List<GetCourseResponse>> getAll() {
+        return new ApiResponse<>("All courses", HttpStatus.OK.value(), courseService.getAll());
+    }
+
+
+    @PutMapping("{id}")
+    public ApiResponse<UpdateCourseResponse> update(@RequestBody UpdateCourseRequest updateCourseRequest, @PathVariable Long id) {
+
+        return new ApiResponse<>(String.format("Course  by id: {%d} successfully updated", id), HttpStatus.OK.value(), courseService.update(updateCourseRequest, id));
+    }
+
+    ///////////////   xi Stringi construktor@ chi berum  String.format("Course by id: {%d} successfully removed", id)
+    @DeleteMapping("{id}")
+    public ApiResponse<Void> delete(@PathVariable Long id){
+        courseService.delete(id);
+        return new ApiResponse<>(String.format("Course by id: {%d} successfully removed", id));
+    }
+
+}
