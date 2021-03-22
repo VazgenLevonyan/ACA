@@ -1,4 +1,4 @@
-package com.acapro.certificat.transfer.response.course;
+package com.acapro.certificat.dto.response.course;
 
 import lombok.Data;
 

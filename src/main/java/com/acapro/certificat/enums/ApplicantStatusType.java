@@ -1,5 +1,5 @@
 package com.acapro.certificat.enums;
 
-public enum StatusType {
+public enum ApplicantStatusType {
     ON_HOLD, IN_PROGRESS, COMPLETED
 }

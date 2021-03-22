@@ -1,4 +1,4 @@
-package com.acapro.certificat.exceptions;
+package com.acapro.certificat.exception;
 
 public class ApplicantNotFoundException extends RuntimeException{
     public ApplicantNotFoundException(Long id){

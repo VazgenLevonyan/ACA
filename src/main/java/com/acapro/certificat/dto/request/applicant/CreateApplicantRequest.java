@@ -1,6 +1,6 @@
-package com.acapro.certificat.transfer.request.applicant;
+package com.acapro.certificat.dto.request.applicant;
 
-import com.acapro.certificat.enums.StatusType;
+import com.acapro.certificat.enums.ApplicantStatusType;
 import lombok.Data;
 
 @Data
@@ -9,6 +9,6 @@ public class CreateApplicantRequest {
     private String email;
     private int phoneNumber;
     private String address;
-    private StatusType statusType;
+    private ApplicantStatusType statusType;
     private Long  course_id;
 }

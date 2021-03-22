@@ -1,12 +1,10 @@
-package com.acapro.certificat.transfer.response.course;
+package com.acapro.certificat.dto.request.course;
 
 import lombok.Data;
 
 @Data
-public class CreateCourseResponse {
-    private Long id;
+public class CreateCourseRequest {
     private String name;
     private String teacherName;
     private String description;
-
 }

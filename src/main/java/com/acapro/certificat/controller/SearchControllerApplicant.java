@@ -1,6 +1,4 @@
 package com.acapro.certificat.controller;
-
-
 import com.acapro.certificat.entity.Applicant;
 import com.acapro.certificat.repository.ApplicantRepository;
 import org.springframework.data.domain.Page;
@@ -20,16 +18,12 @@ public class SearchControllerApplicant {
         this.applicantRepository = applicantRepository;
     }
 
-
     @GetMapping("/search")
     public Page<Applicant> search(
             @RequestParam(value = "name", required = false) String name,
             @RequestParam(value = "email", required = false) String email,
             @RequestParam(value = "courseId", required = false) Long courseId,
-            Pageable pageable
-    ) {
+            Pageable pageable) {
         return applicantRepository.search(name, email, courseId, pageable);
-
-
     }
 }

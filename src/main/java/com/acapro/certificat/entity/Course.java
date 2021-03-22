@@ -1,12 +1,10 @@
 package com.acapro.certificat.entity;
-
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Data;
-
 import javax.persistence.*;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
-
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "course")
@@ -33,7 +31,7 @@ public class Course {
     @Column(name = "description")
     private String description;
 
-//    @OneToMany(mappedBy = "course")
-//    List<Applicant> applicantList = new ArrayList<>();
-
+    @OneToMany(mappedBy = "course")
+            @JsonBackReference
+    Set<Applicant> applicantList = new HashSet<>();
 }
